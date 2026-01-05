@@ -1,0 +1,10 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sk-gold: #D4AF37;
+  --color-sk-navy: #0A192F;
+}
+
+body {
+  scroll-behavior: smooth;
+}
