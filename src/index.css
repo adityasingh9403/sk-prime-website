@@ -1,10 +1,17 @@
 @import "tailwindcss";
 
 @theme {
-  --color-sk-gold: #D4AF37;
-  --color-sk-navy: #0A192F;
+  /* Soft & Professional Palette */
+  --color-sk-gold: #D4AF37;       /* Logo Gold */
+  --color-sk-navy: #0A192F;       /* Deep Navy for Text/Icons */
+  --color-sk-bg-light: #F8FAFC;   /* Very Soft Blue/White for Body */
+  --color-sk-surface: #FFFFFF;    /* Pure White for Cards */
+  --color-sk-border: #E2E8F0;     /* Subtle Gray for Borders */
 }
 
-body {
-  scroll-behavior: smooth;
+@layer base {
+  body {
+    @apply bg-sk-bg-light text-slate-800 antialiased selection:bg-sk-gold selection:text-white;
+    scroll-behavior: smooth;
+  }
 }
