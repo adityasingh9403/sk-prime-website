@@ -70,7 +70,7 @@ const Hero = () => {
       image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2070&auto=format&fit=crop"
     },
     {
-      name: "Verma Construction",
+      name: "Verma Properties and Construction",
       desc: "Defining cityscapes with premium infrastructure, sustainable development, and transparent urban brokerage.",
       icon: <Building2 size={28} />,
       image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop"

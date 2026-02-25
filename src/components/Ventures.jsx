@@ -72,7 +72,7 @@ const Ventures = () => {
       bgImage: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=2069"
     },
     {
-      title: "VERMA CONSTRUCTION & PRIME PROPERTY BROKER",
+      title: "VERMA PRIME PROPERTIES CONSTRUCTION",
       // Sustainable urban infrastructure focus
       desc: "Architecting sustainable urban infrastructure and premium modern developments across the region.",
       icon: Home,
@@ -113,7 +113,7 @@ const Ventures = () => {
             <div className="absolute top-0 left-0 w-1.5 h-full bg-[#D4AF37]" />
             <p className="text-slate-800 font-black uppercase tracking-[0.2em] text-[10px] mb-3">Core Philosophy</p>
             <p className="text-slate-500 font-medium text-xs leading-relaxed italic">
-              "Architecting a legacy of trust by modernizing unorganized markets across global horizons."
+              Architecting a legacy of trust by modernizing unorganized markets across global horizons.
             </p>
           </motion.div>
         </div>

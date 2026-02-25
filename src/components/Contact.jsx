@@ -87,7 +87,7 @@ const Contact = () => {
             className="max-w-2xl mx-auto"
           >
             <p className="text-sm md:text-xl lg:text-2xl text-slate-500 font-light leading-relaxed italic px-2 md:px-6">
-              <span className="text-slate-900 font-medium md:block mb-1">"Your vision deserves a legacy."</span>
+              <span className="text-slate-900 font-medium md:block mb-1">Your vision deserves a legacy.</span>
               Connect with our central command for strategic <br className="hidden md:block" /> global partnerships.
             </p>
           </motion.div>

@@ -17,7 +17,7 @@ const Chatbot = () => {
         "pos": "Our Restaurant POS system is a cloud-based solution currently in deployment for SK Prime Infotech.",
         "sports": "We manage the Super King cricket network and organize flagship leagues like KCPL Season 1.",
         "kcpl": "KCPL Season 1 was a mega event organized by SK Prime, featuring 8 professional teams in Indore.",
-        "construction": "We architect modern infrastructure through Verma Construction and Aarav Build Con projects.",
+        "construction": "We architect modern infrastructure through Verma Prime Properties and Construction and Aarav Build Con projects.",
         "property": "We offer premium property brokering and sustainable urban developments in Indore.",
         "events": "SK Prime Events handles grand-scale corporate launches, like our Feb 15, 2026 inauguration.",
         "owner": "SK Prime Group was founded by Harsh Verma (CEO). Sarika Rakesh Verma serves as The Chairman.",
