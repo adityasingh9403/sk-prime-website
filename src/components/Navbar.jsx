@@ -7,7 +7,6 @@ const Navbar = () => {
 
   // Departments & Sections
   const navLinks = [
-    { name: 'Home', path: '/' },
     { name: 'About', path: '/about' },
     { name: 'Ventures', path: '/ventures' },
     { name: 'Academy', path: '/academy' },
