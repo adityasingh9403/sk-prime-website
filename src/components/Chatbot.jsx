@@ -1,17 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, Loader2, Phone, Briefcase } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, Loader2 } from 'lucide-react';
 
 const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [messages, setMessages] = useState([
-        { role: 'bot', text: 'Namaste! Welcome to SK Prime Group. How can I help you with our services today?' }
+        { role: 'bot', text: 'Namaste! Welcome to SK Prime Group. How can I help you today?' }
     ]);
     const [input, setInput] = useState('');
     const [isTyping, setIsTyping] = useState(false);
     const scrollRef = useRef(null);
 
-    // --- MANUAL KNOWLEDGE BASE (No API Required) ---
+    // --- Knowledge Base (Same as yours) ---
     const knowledgeBase = {
         "it": "SK Prime Infotech specializes in React, Vite, Node.js, and specialized software like Restaurant POS. Technical Lead: Aditya Singh.",
         "pos": "Our Restaurant POS system is a cloud-based solution currently in deployment for SK Prime Infotech.",
@@ -28,7 +28,6 @@ const Chatbot = () => {
 
     const getManualResponse = (userInput) => {
         const query = userInput.toLowerCase();
-        
         if (query.includes("it") || query.includes("software") || query.includes("web")) return knowledgeBase.it;
         if (query.includes("pos") || query.includes("restaurant")) return knowledgeBase.pos;
         if (query.includes("sports") || query.includes("cricket")) return knowledgeBase.sports;
@@ -40,22 +39,17 @@ const Chatbot = () => {
         if (query.includes("contact") || query.includes("number") || query.includes("phone")) return knowledgeBase.contact;
         if (query.includes("address") || query.includes("office") || query.includes("location")) return knowledgeBase.address;
         if (query.includes("job") || query.includes("career") || query.includes("hiring")) return knowledgeBase.career;
-        
-        return "I'm sorry, I didn't get that. Please ask about our IT, Sports, Construction services, or contact us at +91 88787 40101.";
+        return "I'm sorry, I didn't get that. Please ask about our IT, Sports, Construction, or call +91 88787 40101.";
     };
 
     const handleSend = () => {
         if (!input.trim()) return;
-
         const userMsg = input;
         setMessages(prev => [...prev, { role: 'user', text: userMsg }]);
         setInput('');
         setIsTyping(true);
-
-        // Simulated processing time
         setTimeout(() => {
-            const botResponse = getManualResponse(userMsg);
-            setMessages(prev => [...prev, { role: 'bot', text: botResponse }]);
+            setMessages(prev => [...prev, { role: 'bot', text: getManualResponse(userMsg) }]);
             setIsTyping(false);
         }, 800);
     };
@@ -65,57 +59,74 @@ const Chatbot = () => {
     }, [messages, isTyping]);
 
     return (
-        <div className="fixed bottom-10 right-10 z-[9999]">
+        <div className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-[10000]">
+            {/* Toggle Button */}
             <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 onClick={() => setIsOpen(!isOpen)}
-                className="w-16 h-16 bg-[#001233] text-[#D4AF37] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#D4AF37]"
+                className="w-14 h-14 md:w-16 md:h-16 bg-[#001233] text-[#D4AF37] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#D4AF37] relative z-[10001]"
             >
-                {isOpen ? <X size={28} /> : <MessageSquare size={28} />}
+                {isOpen ? <X size={24} className="md:w-7 md:h-7" /> : <MessageSquare size={24} className="md:w-7 md:h-7" />}
             </motion.button>
 
+            {/* Chat Window */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: 50, scale: 0.9 }}
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{ opacity: 1, y: 0, scale: 1 }}
-                        exit={{ opacity: 0, y: 50, scale: 0.9 }}
-                        className="absolute bottom-24 right-0 w-[350px] md:w-[380px] h-[500px] bg-white rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden flex flex-col font-sans"
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
+                        className="fixed inset-0 md:absolute md:inset-auto md:bottom-20 md:right-0 w-full h-full md:w-[380px] md:h-[550px] bg-white md:rounded-[2.5rem] shadow-2xl border border-gray-100 overflow-hidden flex flex-col"
                     >
-                        <div className="bg-[#001233] p-6 text-white flex items-center gap-4 border-b-4 border-[#D4AF37]">
-                            <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-[#001233]">
-                                <Bot size={24} />
+                        {/* Header */}
+                        <div className="bg-[#001233] p-5 md:p-6 text-white flex items-center justify-between border-b-4 border-[#D4AF37]">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 bg-[#D4AF37] rounded-full flex items-center justify-center text-[#001233]">
+                                    <Bot size={22} />
+                                </div>
+                                <div>
+                                    <h4 className="font-black text-xs md:text-sm uppercase tracking-widest leading-none">SK Prime Support</h4>
+                                    <p className="text-[9px] text-[#D4AF37] font-bold mt-1 tracking-wider uppercase">Active Assistant</p>
+                                </div>
                             </div>
-                            <div>
-                                <h4 className="font-black text-sm uppercase tracking-widest leading-none">SK Prime Support</h4>
-                                <p className="text-[10px] text-[#D4AF37] font-bold mt-1 tracking-wider uppercase">Free Manual Assistant</p>
-                            </div>
+                            {/* Mobile Close Button (Visible only on mobile inside header) */}
+                            <button onClick={() => setIsOpen(false)} className="md:hidden text-white/50 hover:text-white">
+                                <X size={24} />
+                            </button>
                         </div>
 
-                        <div ref={scrollRef} className="flex-grow p-6 overflow-y-auto bg-gray-50 space-y-4">
+                        {/* Messages Area */}
+                        <div ref={scrollRef} className="flex-grow p-4 md:p-6 overflow-y-auto bg-gray-50 space-y-4">
                             {messages.map((msg, i) => (
                                 <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                                    <div className={`max-w-[85%] p-4 rounded-2xl text-[11px] font-medium leading-relaxed shadow-sm ${
+                                    <div className={`max-w-[85%] p-3 md:p-4 rounded-2xl text-[12px] md:text-[13px] font-medium leading-relaxed shadow-sm ${
                                         msg.role === 'user' ? 'bg-[#001233] text-white rounded-tr-none' : 'bg-white text-gray-800 border border-gray-100 rounded-tl-none'
                                     }`}>
                                         {msg.text}
                                     </div>
                                 </div>
                             ))}
-                            {isTyping && <Loader2 size={16} className="animate-spin text-[#D4AF37] mx-auto" />}
+                            {isTyping && (
+                                <div className="flex justify-start">
+                                    <div className="bg-white p-3 rounded-2xl border border-gray-100">
+                                        <Loader2 size={16} className="animate-spin text-[#D4AF37]" />
+                                    </div>
+                                </div>
+                            )}
                         </div>
 
-                        <div className="p-4 bg-white border-t border-gray-100 flex items-center gap-2">
+                        {/* Input Area */}
+                        <div className="p-4 bg-white border-t border-gray-100 flex items-center gap-2 pb-safe">
                             <input
                                 type="text"
                                 value={input}
                                 onChange={(e) => setInput(e.target.value)}
                                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                                placeholder="Ask about IT, Sports, or Contact..."
-                                className="flex-grow bg-gray-100 border-none rounded-xl px-4 py-3 text-xs outline-none focus:ring-1 focus:ring-[#D4AF37]"
+                                placeholder="Type a message..."
+                                className="flex-grow bg-gray-100 border-none rounded-xl px-4 py-3 text-sm md:text-xs outline-none focus:ring-1 focus:ring-[#D4AF37]"
                             />
-                            <button onClick={handleSend} className="p-3 bg-[#D4AF37] text-[#001233] rounded-xl">
+                            <button onClick={handleSend} className="p-3 bg-[#D4AF37] text-[#001233] rounded-xl hover:bg-[#b8972f] transition-colors">
                                 <Send size={18} />
                             </button>
                         </div>

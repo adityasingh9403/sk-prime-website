@@ -122,7 +122,53 @@ const About = () => {
             Modernizing unorganized markets through innovation, sports, and infrastructure.
           </motion.p>
         </section>
+        {/* --- THE ORIGIN STORY --- */}
+        <section className="py-5 md:py-10 bg-white/40 backdrop-blur-sm rounded-[3rem] border border-slate-100 mb-20 overflow-hidden relative">
+          <div className="max-w-5xl mx-auto px-6 text-center">
+            {/* Icon Badge */}
+            <div className="inline-block p-4 rounded-2xl bg-amber-50 text-[#D4AF37] mb-8 shadow-sm">
+              <Target size={28} />
+            </div>
 
+            {/* Heading */}
+            <h2 className="text-3xl md:text-6xl font-black text-slate-900 uppercase tracking-tighter mb-10 italic font-serif leading-none">
+              Our Vision: To <span className="text-[#D4AF37]">Empower</span> <br />
+              Every Talent, In Every Field.
+            </h2>
+
+            {/* Story Content */}
+            <div className="max-w-3xl mx-auto space-y-6">
+              <p className="text-slate-700 text-lg md:text-2xl leading-relaxed font-light italic">
+                "SK Prime Group was born from a singular, powerful mission: To bridge the gap between raw potential and professional excellence."
+              </p>
+
+              <p className="text-slate-500 text-base md:text-lg leading-relaxed font-normal">
+                From the tech labs of <span className="text-slate-800 font-bold">Infotech</span> to the high-energy stadiums of <span className="text-slate-800 font-bold">KCPL Sports</span>,
+                our story is about people. We are dedicated to identifying hidden talents in unorganized sectors and providing them with
+                the corporate structure, technology, and platforms they need to dominate the global stage.
+                <span className="block mt-4 text-[#D4AF37] font-bold uppercase tracking-widest text-sm">
+                  We don't just build businesses; we build the people who lead them.
+                </span>
+              </p>
+            </div>
+
+            {/* Impact Timeline / Stats */}
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-10 border-t border-slate-100">
+              {[
+                { label: "Vision Founded", val: "2026" },
+                { label: "Talent Ecosystem", val: "Multidisciplinary" },
+                { label: "Flagship Venture", val: "KCPL Sports" },
+                { label: "Global Tech", val: "Hisaab Kitaab" }
+              ].map((item, idx) => (
+                <div key={idx} className="p-4 group hover:bg-white transition-all rounded-2xl">
+                  <p className="text-[#D4AF37] font-black text-2xl mb-1 group-hover:scale-110 transition-transform inline-block">{item.val}</p>
+                  <p className="text-slate-400 text-[10px] uppercase tracking-[0.2em] font-black">{item.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
         {/* EXECUTIVE BOARD - Optimized & Compact */}
         <section className="border-t border-slate-100">
           {/* Header Section - Minimal Spacing */}

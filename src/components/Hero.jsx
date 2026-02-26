@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, Activity, Cpu, Building2, Trophy, Globe, Crown, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Activity, Cpu, Building2, Trophy, Globe, Crown, ShieldCheck,Target, Globe2, Rocket } from 'lucide-react';
 
 // --- SUB-COMPONENT: COUNTER ---
 const Counter = ({ value, title, icon: Icon }) => {
@@ -15,7 +15,7 @@ const Counter = ({ value, title, icon: Icon }) => {
       const target = parseInt(value);
       const duration = 2000; // 2 seconds
       const increment = target / (duration / 30);
-      
+
       const timer = setInterval(() => {
         start += increment;
         if (start >= target) {
@@ -79,11 +79,11 @@ const Hero = () => {
 
   return (
     <div id="home" className="bg-[#FDFDFD] selection:bg-[#D4AF37] selection:text-white overflow-x-hidden font-sans">
-      
+
       {/* --- CINEMATIC HERO SECTION --- */}
       {/* pt-[80px] added to prevent content from hiding behind the fixed Navbar */}
       <header className="relative min-h-screen flex items-center justify-center overflow-hidden bg-[#001233] pt-[80px]">
-        
+
         {/* Parallax Background */}
         <motion.div style={{ y: bgY }} className="absolute inset-0 z-0 scale-110">
           <img
@@ -96,7 +96,7 @@ const Hero = () => {
 
         {/* Hero Content Wrapper */}
         <motion.div style={{ y: textY }} className="relative z-20 text-center px-4 md:px-6 max-w-7xl pt-12 md:pt-0">
-          
+
           {/* Badge */}
           <motion.div
             initial={{ opacity: 0, y: -20 }}
@@ -129,8 +129,8 @@ const Hero = () => {
             transition={{ delay: 0.4 }}
             className="text-white/70 text-base md:text-2xl font-light mb-12 max-w-3xl mx-auto leading-relaxed italic px-4"
           >
-            A global powerhouse transforming unorganized markets into 
-            <span className="text-[#D4AF37] font-bold"> structured legacies </span> 
+            A global powerhouse transforming unorganized markets into
+            <span className="text-[#D4AF37] font-bold"> structured legacies </span>
             through disruptive innovation and integrity.
           </motion.p>
 
@@ -153,8 +153,82 @@ const Hero = () => {
         />
       </header>
 
+      <section className="relative py-10 bg-white overflow-hidden">
+        {/* Background Subtle Elements */}
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-slate-50/50 -skew-x-12 translate-x-20 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+
+            {/* Left Side: What We Do (The Core Vision) */}
+            <div className="lg:col-span-7 space-y-8">
+              <motion.div
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="inline-flex items-center gap-3 py-2 px-4 rounded-full bg-[#D4AF37]/10 border border-[#D4AF37]/20"
+              >
+                <Target size={14} className="text-[#D4AF37]" />
+                <span className="text-[#8A6E2F] text-[10px] font-black uppercase tracking-[0.3em]">Our Identity</span>
+              </motion.div>
+
+              <motion.h2
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.2 }}
+                className="text-4xl md:text-6xl font-black text-[#001233] leading-[1.1] tracking-tighter uppercase italic"
+              >
+                Architecting <span className="text-[#D4AF37]">Structured</span> <br />
+                Legacies From Scratch.
+              </motion.h2>
+
+              <motion.p
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3 }}
+                className="text-slate-600 text-lg md:text-xl font-light leading-relaxed max-w-2xl italic"
+              >
+                "SK Prime Group isn't just a business; it's a bridge. We take unorganized regional sectors and transform them into global-standard corporate powerhouses through disruptive innovation and absolute integrity."
+              </motion.p>
+            </div>
+
+            {/* Right Side: Who We Help (Target Audience Cards) */}
+            <div className="lg:col-span-5 grid gap-6">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="p-8 bg-[#001233] text-white border-l-4 border-[#D4AF37] shadow-2xl"
+              >
+                <Globe2 size={32} className="text-[#D4AF37] mb-6" />
+                <h4 className="text-xl font-bold mb-3 uppercase tracking-tight">Regional Talent</h4>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Empowering local athletes and creators (like KCPL) by providing professional platforms to showcase their skills to the world.
+                </p>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="p-8 bg-white border border-slate-100 shadow-xl"
+              >
+                <Rocket size={32} className="text-[#D4AF37] mb-6" />
+                <h4 className="text-xl font-bold text-[#001233] mb-3 uppercase tracking-tight">Visionary Businesses</h4>
+                <p className="text-slate-500 text-sm leading-relaxed">
+                  Helping local enterprises digitize and scale with high-end tech (Hisaab Kitaab) and strategic infrastructure.
+                </p>
+              </motion.div>
+            </div>
+
+          </div>
+        </div>
+      </section>
       {/* --- FLOATING STATS SECTION --- */}
-      <section className="relative z-30 px-4 md:px-6 -mt-16 md:-mt-24">
+      <section className="relative z-30 px-4 md:px-6">
         <div className="max-w-6xl mx-auto bg-white/95 backdrop-blur-3xl border border-slate-100 shadow-[0_40px_100px_-20px_rgba(0,0,0,0.15)]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             <Counter value="15" title="Projects Delivered" icon={Activity} />
@@ -166,9 +240,9 @@ const Hero = () => {
       </section>
 
       {/* --- VERTICALS GRID SECTION --- */}
-      <section className="py-24 md:py-40 px-4 md:px-6">
+      <section className="py-10 md:py-15 px-4 md:px-6">
         <div className="max-w-7xl mx-auto">
-          
+
           <div className="text-center mb-20 md:mb-32">
             <h2 className="text-[#D4AF37] font-black tracking-[0.5em] uppercase text-[10px] mb-6">Our Ecosystem</h2>
             <h3 className="text-5xl md:text-8xl font-black text-[#001233] tracking-tighter uppercase italic leading-none">

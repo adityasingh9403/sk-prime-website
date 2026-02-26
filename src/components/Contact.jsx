@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MessageCircle, Instagram, Linkedin, Twitter, MapPin, Globe, ArrowUpRight, Navigation, Crown } from 'lucide-react';
+import { Phone, Mail, MessageCircle, Instagram, Linkedin, Twitter, MapPin, Globe, ArrowUpRight, Navigation, Crown,Clock } from 'lucide-react';
 
 const ContactCard = ({ title, value, link, icon: Icon }) => (
   <motion.a
@@ -99,56 +99,82 @@ const Contact = () => {
             <ContactCard key={i} {...c} />
           ))}
         </div>
+        <section className="py-12 md:py-24 px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-7xl mx-auto bg-white rounded-[2.5rem] md:rounded-[4rem] overflow-hidden border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)]"
+          >
+            <div className="grid grid-cols-1 lg:grid-cols-2">
 
-        {/* --- HQ COMMAND CENTER: THE INDORE HUB --- */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-white rounded-[2.5rem] md:rounded-[4rem] p-8 md:p-24 text-center relative overflow-hidden border border-slate-100 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.05)]"
-        >
-          {/* Subtle Grid Overlay */}
-          <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
-            style={{ backgroundImage: `radial-gradient(#000 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
+              {/* Left Side: Content & Details */}
+              <div className="p-8 md:p-16 lg:p-24 flex flex-col justify-center relative">
+                {/* Subtle Grid Background */}
+                <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                  style={{ backgroundImage: `radial-gradient(#000 1px, transparent 1px)`, backgroundSize: '30px 30px' }}></div>
 
-          <div className="relative z-10">
-            <div className="w-16 h-16 md:w-20 md:h-20 bg-slate-50 border border-slate-100 rounded-2xl md:rounded-[2rem] flex items-center justify-center mx-auto mb-6 md:mb-10 group hover:bg-slate-900 transition-all duration-500 shadow-sm">
-              <MapPin className="text-slate-900 group-hover:text-[#D4AF37] transition-colors" size={28} />
+                <div className="relative z-10">
+                  <div className="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center mb-8 group hover:bg-slate-900 transition-all duration-500 shadow-sm">
+                    <MapPin className="text-slate-900 group-hover:text-[#D4AF37]" size={24} />
+                  </div>
+
+                  <h3 className="text-[#D4AF37] font-black uppercase tracking-[0.4em] text-[10px] mb-4">Corporate Headquarters</h3>
+
+                  <h4 className="text-4xl md:text-6xl font-black mb-6 uppercase tracking-tighter leading-none text-slate-900">
+                    INDORE <span className="italic font-serif font-light text-slate-300 text-3xl md:text-5xl">HUB</span>
+                  </h4>
+
+                  <div className="space-y-6 mb-10">
+                    <p className="text-slate-600 text-lg md:text-xl font-light leading-snug italic">
+                      Shop No. G1, SR Empire, <br />
+                      <span className="text-slate-900 font-black not-italic">Silver Star City, Rau, Indore</span>
+                    </p>
+
+                    {/* Status / Hours Badge */}
+                    <div className="flex items-center gap-3 text-slate-500 text-xs font-bold uppercase tracking-widest">
+                      <Clock size={14} className="text-[#D4AF37]" />
+                      <span>Mon - Fri: 10:30 AM - 07:00 PM</span>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a
+                      href="https://www.google.com/maps/place/SK+Prime+Group+Private+Limited/@22.6433865,75.8387294,17z/"
+                      target="_blank"
+                      rel="noreferrer"
+                      className="bg-slate-900 text-white px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-[#D4AF37] transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95"
+                    >
+                      <Navigation size={16} /> Get Directions
+                    </a>
+                    <a
+                      href="https://skprimegroup.com/"
+                      className="group border border-slate-200 text-slate-900 px-8 py-4 rounded-full font-black text-[10px] uppercase tracking-widest hover:bg-slate-50 transition-all flex items-center justify-center gap-3"
+                    >
+                      <Globe size={16} className="group-hover:rotate-12 transition-transform" /> Website
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Side: Interactive Map */}
+              <div className="h-[400px] lg:h-auto min-h-[400px] relative grayscale-[20%] hover:grayscale-0 transition-all duration-700">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3681.65884949141!2d75.8361544759654!3d22.64338649449838!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3962fb0f11556ead%3A0xbf410c7ca4a4529b!2sSK%20Prime%20Group%20Private%20Limited!5e0!3m2!1sen!2sin!4v1709000000000!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="SK Prime Group Office Location"
+                  className="absolute inset-0"
+                ></iframe>
+              </div>
+
             </div>
-
-            <h3 className="text-[#D4AF37] font-black uppercase tracking-[0.4em] md:tracking-[0.5em] text-[9px] md:text-[11px] mb-4 md:mb-8">Corporate Headquarters</h3>
-
-            <h4 className="text-3xl md:text-6xl lg:text-[7rem] font-black mb-8 md:mb-12 uppercase tracking-tighter leading-none text-slate-900">
-              INDORE <span className="italic font-serif font-light text-slate-200">HUB</span>
-            </h4>
-
-            <div className="mb-10 md:mb-16">
-              <p className="text-slate-600 text-lg md:text-3xl lg:text-4xl font-light uppercase tracking-tight max-w-4xl mx-auto leading-tight italic">
-                Shop No. G1, SR Empire, <br className="hidden sm:block" />
-                <span className="text-slate-900 font-black not-italic">Silver Star City, Rau, Indore</span>
-              </p>
-              <div className="w-16 md:w-24 h-1 bg-[#D4AF37] mx-auto mt-6 md:mt-10 rounded-full" />
-            </div>
-
-            <div className="flex flex-col sm:flex-row justify-center gap-4 md:gap-6 items-center">
-              <a
-                href="https://www.google.com/maps?q=Silver+Star+City+Rau+Indore"
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto bg-slate-900 text-white px-8 md:px-12 py-4 md:py-5 rounded-full font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] hover:bg-[#D4AF37] transition-all flex items-center justify-center gap-3 shadow-xl active:scale-95"
-              >
-                <Navigation size={16} /> Open in Maps
-              </a>
-              <a
-                href="https://www.skprimegroup.com"
-                className="w-full sm:w-auto group border border-slate-200 text-slate-900 px-8 md:px-12 py-4 md:py-5 rounded-full font-black text-[9px] md:text-[10px] uppercase tracking-[0.2em] md:tracking-[0.3em] hover:bg-slate-50 transition-all flex items-center justify-center gap-3 active:scale-95"
-              >
-                <Globe size={16} className="group-hover:rotate-12 transition-transform" /> Global Portal
-              </a>
-            </div>
-          </div>
-        </motion.div>
-
+          </motion.div>
+        </section>
         {/* --- FOOTER TAG --- */}
         <div className="mt-20 md:mt-32 text-center">
           <div className="w-full h-px bg-slate-100 mb-8 md:mb-10" />

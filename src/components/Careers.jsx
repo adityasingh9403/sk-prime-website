@@ -89,17 +89,6 @@ const Careers = () => {
         }
     };
 
-    if (isLoadingStatus) {
-        return (
-            <div className="min-h-screen bg-[#fcfcfd] flex items-center justify-center">
-                <div className="text-center">
-                    <div className="w-12 h-12 border-4 border-[#D4AF37] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-                    <p className="text-[#001233] font-black text-[10px] uppercase tracking-[0.5em]">Synchronizing Records...</p>
-                </div>
-            </div>
-        );
-    }
-
     const labelStyle = "text-slate-500 text-[10px] font-black uppercase tracking-[0.3em] mb-3 block italic ml-1";
     const inputStyle = "w-full bg-slate-50 border border-slate-100 rounded-2xl px-6 py-4 text-slate-900 focus:border-[#D4AF37] focus:bg-white outline-none transition-all placeholder:text-slate-400 text-sm shadow-sm";
 
